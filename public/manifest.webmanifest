@@ -1,0 +1,18 @@
+{
+  "name": "EstU · Admisión Zootecnia",
+  "short_name": "EstU",
+  "description": "Preparación para el examen de admisión universitaria en Ecuador (ESPOCH / UTM), con énfasis en Biología y Química para Zootecnia.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#06271b",
+  "theme_color": "#06271b",
+  "lang": "es-EC",
+  "categories": ["education", "productivity"],
+  "icons": [
+    { "src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

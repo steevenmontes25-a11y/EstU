@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --c-bg: 245 247 245;
+    --c-surface: 255 255 255;
+    --c-raised: 240 244 241;
+    --c-line: 224 231 226;
+    --c-fg: 24 32 28;
+    --c-muted: 104 118 110;
+    --c-accent: 21 131 83;
+    --c-accent-soft: 214 245 226;
+    --c-ok: 21 131 83;
+    --c-bad: 200 51 51;
+    --c-warn: 190 128 20;
+    color-scheme: light;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --c-bg: 11 16 13;
+      --c-surface: 22 29 25;
+      --c-raised: 31 40 34;
+      --c-line: 44 56 48;
+      --c-fg: 232 238 233;
+      --c-muted: 148 164 154;
+      --c-accent: 71 191 132;
+      --c-accent-soft: 14 69 48;
+      --c-ok: 71 191 132;
+      --c-bad: 248 113 113;
+      --c-warn: 250 204 21;
+      color-scheme: dark;
+    }
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-bg text-fg font-sans antialiased;
+    /* Zona segura de los teléfonos con notch, ya que la app corre como PWA. */
+    padding-bottom: env(safe-area-inset-bottom);
+    overscroll-behavior-y: none;
+  }
+
+  /* El foco del teclado debe verse, pero no en cada toque del dedo. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-bg;
+  }
+
+  ::selection {
+    @apply bg-accent-soft;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-surface border border-line rounded-2xl;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold
+           transition active:scale-[0.98] disabled:opacity-40 disabled:pointer-events-none;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent text-white hover:brightness-110;
+  }
+
+  .btn-ghost {
+    @apply btn bg-raised text-fg hover:bg-line;
+  }
+
+  .btn-outline {
+    @apply btn border border-line text-fg hover:bg-raised;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-line bg-surface px-3 py-2.5 text-sm text-fg
+           focus:border-accent focus:outline-none;
+  }
+
+  .label {
+    @apply block text-xs font-semibold uppercase tracking-wide text-muted mb-1.5;
+  }
+
+  /* Barras de scroll discretas en las tablas de apuntes. */
+  .scroll-x {
+    @apply overflow-x-auto;
+    scrollbar-width: thin;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
